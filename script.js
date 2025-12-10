@@ -19,17 +19,17 @@ const copiedText = document.getElementById('copiedText');
 const newCode = generateCode();
 codeEl.firstChild.textContent = newCode;
 
-let copyTimeout; // 🆕 this tracks the last timeout
+let copyTimeout; // this tracks the last timeout
 
 codeEl.addEventListener('click', () => {
     const text = codeEl.firstChild.textContent.trim();
     navigator.clipboard.writeText(text).then(() => {
         copiedText.classList.add('show');
 
-        // 🧹 clear any existing timeout to prevent flicker
+        // clear any existing timeout to prevent flicker
         clearTimeout(copyTimeout);
 
-        // 🕒 fade out after 1.5s
+        // fade out after 1.5s
         copyTimeout = setTimeout(() => {
             copiedText.classList.remove('show');
         }, 1500);
